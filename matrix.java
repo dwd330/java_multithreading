@@ -62,16 +62,12 @@ public static void main(String [] args){
 
       //thread pool
       ExecutorService executor = Executors.newCachedThreadPool();
-      // Create and launch n threads
+      // calculate
       for (int i = 0; i < m; i++) //row itertion (m rows)
           for (int j = 0; j < p; j++) {//clum iterion (n clumn)
                 //passing array for a and b then posion of c (row,clmn)
-              executor.execute(new matrix_Mul_tithread(A[i],B_transpose[j],i,j));
+               matrix_Mul_func(A[i],B_transpose[j],i,j);
       }
-      executor.shutdown();
-      // Wait until all tasks are finished
-      while (!executor.isTerminated()) { }
-
 
     }catch (Exception e) {
         e.printStackTrace();
@@ -105,22 +101,9 @@ public static void main(String [] args){
     }
   }//End main
 
-  }//End Class
 
-  class matrix_Mul_tithread implements Runnable {
-    private int [] A;
-    private int [] B; 
-    private int row_n;  
-    private int clm_n;  
 
-// Construct a task
-public matrix_Mul_tithread(int[] A, int[] B, int row_n, int clm_n) {
-  this.A=A;
-  this.B=B;
-  this.row_n=row_n;
-  this.clm_n=clm_n;
-     }
-    public void run()
+    public static void matrix_Mul_func(int[] A, int[] B, int row_n, int clm_n)
     {
         try {
                 //multiplying and  of 2 matrices
@@ -134,5 +117,6 @@ public matrix_Mul_tithread(int[] A, int[] B, int row_n, int clm_n) {
         }
     }
 }
+
 
   
