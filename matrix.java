@@ -60,8 +60,6 @@ public static void main(String [] args){
     //start to create threads ....
     try{
 
-      //thread pool
-      ExecutorService executor = Executors.newCachedThreadPool();
       // calculate
       for (int i = 0; i < m; i++) //row itertion (m rows)
           for (int j = 0; j < p; j++) {//clum iterion (n clumn)
